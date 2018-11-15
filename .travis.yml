@@ -31,9 +31,9 @@ after_script:
 after_success:
 - npm run coverage
 
-cache:
-    directories:
-    - node_modules
+#cache:
+#    directories:
+#    - node_modules
 
 notifications:
     email:
