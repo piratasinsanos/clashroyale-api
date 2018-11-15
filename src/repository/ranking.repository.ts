@@ -54,7 +54,7 @@ export class RankingRepository extends BaseRepository<RankingModel> {
     }
 
     findRankingById(rankingId: string): Promise<RankingModel> {
-        return this.model.findById(rankingId).then((ranking: RankingModel | null) => {
+        return this.model.findById(new ObjectID(rankingId)).then((ranking: RankingModel | null) => {
             return <RankingModel>ranking;
         });
     }
