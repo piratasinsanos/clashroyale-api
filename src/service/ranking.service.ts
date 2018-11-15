@@ -38,17 +38,15 @@ export class RankingService extends BaseService {
             return;
         }
 
-        // rankings.forEach((ranking: RankingModel) => {
-        //
-        //     ranking.allowed = !isNullOrUndefined(ranking.operator) && ranking.operator.sub === operator.sub;
-        //
-        //     if (!isNullOrUndefined(ranking.signature)) {
-        //         ranking.player = TypedJSON.parse(TypedJSON.stringify(ranking.player, {
-        //             includeTags: [FORM_TAG]
-        //         }), Composition, {}, new AesAndRsaEncryptorDecryptor(Buffer.from(ranking.signature, "base64")));
-        //     }
-        //
-        // });
+        rankings.forEach((ranking: RankingModel) => {
+
+            ranking.allowed = !isNullOrUndefined(ranking.operator) && ranking.operator.sub === operator.sub;
+
+            if (!isNullOrUndefined(ranking.signature)) {
+
+            }
+
+        });
 
         return {
             scores: scores,
