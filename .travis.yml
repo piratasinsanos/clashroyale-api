@@ -7,10 +7,10 @@ services:
 - mongodb
 
 env:
-- DATABASE_URL="mongodb://127.0.0.1:27017/clashroyale"
-- DATABASE_NAME="clashroyale"
-- RSA_PUBLIC_KEY="clashroyale-public.pem"
-- RSA_RIVATE_KEY="clashroyale-private.pem"
+- DATABASE_URL=mongodb://127.0.0.1:27017/clashroyale
+- DATABASE_NAME=clashroyale
+- RSA_PUBLIC_KEY=clashroyale-public.pem
+- RSA_RIVATE_KEY=clashroyale-private.pem
 
 before_install:
 - npm install -g greenkeeper-lockfile@1
