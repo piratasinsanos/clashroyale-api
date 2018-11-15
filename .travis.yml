@@ -10,6 +10,7 @@ env:
     global:
     - DATABASE_URL="mongodb://127.0.0.1:27017/clashroyale"
     - DATABASE_NAME="clashroyale"
+    - DATABASE_DATASOURCE="clashroyale"
     - RSA_PUBLIC_KEY="clashroyale-public.pem"
     - RSA_RIVATE_KEY="clashroyale-private.pem"
 
