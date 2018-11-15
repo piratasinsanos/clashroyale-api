@@ -3,7 +3,6 @@ import {format, isNullOrUndefined} from "util";
 import * as moment from "moment";
 
 const winston = require("winston");
-const elasticsearch = require("winston-elasticsearch");
 
 const config = winston.config;
 
@@ -36,10 +35,6 @@ export class Logger {
                             config.colorize(options.level, options.level.toUpperCase()),
                             options.message);
                     }
-                }),
-                new elasticsearch({
-                    json: true,
-                    level: "debug"
                 })
             ]
         };
