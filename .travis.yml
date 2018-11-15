@@ -7,10 +7,11 @@ services:
 - mongodb
 
 env:
-- DATABASE_URL=mongodb://127.0.0.1:27017/clashroyale
-- DATABASE_NAME=clashroyale
-- RSA_PUBLIC_KEY=clashroyale-public.pem
-- RSA_RIVATE_KEY=clashroyale-private.pem
+    global:
+    - DATABASE_URL="mongodb://127.0.0.1:27017/clashroyale"
+    - DATABASE_NAME="clashroyale"
+    - RSA_PUBLIC_KEY="clashroyale-public.pem"
+    - RSA_RIVATE_KEY="clashroyale-private.pem"
 
 before_install:
 - npm install -g greenkeeper-lockfile@1
@@ -39,11 +40,11 @@ notifications:
         on_failure: always
     slack:
         rooms:
-            secure: IC5JvKbQrf+f2FG+9GWRTX7rYL4Ex1/aMC+ycDiMgnM8rXSbsWnrNtbzWTthGPurkcOkCjkgG9NMHYv44dJr1f/03Dsq7VHebsj5t/5TFVrTTJ1NSKTGpIRN2QjvR0XTOqiI16NLs9bgc5n69WN4BR+9UIQnQi8G0uMnJjJE8R+BQIO1VdiNJfI4nCybWdEfAZsjd6uozdr0pN5AXmBLyZSjG6qRVo9YBLdiQCZrjtj/ZPrmwot7wGTH11PhQyxrh2luKbOIC4lZBRw+6EU5/7shgwHry5c42RomzpMEk7eHkYKiM5FDS1BTHl1dkAUoT8x43dBV4ddNfiYdBzyBim0C66/7dw0Y67An4QBFtHcXmaCy1437VjbcF4StpyAh9/2AsmPjLMuKCc0ZMSvSHirdHiToV1+mzEPWeu1/p6ylRgv4RcPBNc0lb9PMrkY4h1ZL7XrvXmPpR6/tZrha5Qbpbjoa7MxW8qi/G4cYhTl8PHxIbdmD4ldihZUQyz7U6y4Vbsy2Nkv+42wG0xFrJ9tfPE3EuHizjAXzzzVRN8pZjaEv1uuNRb7yHT1slqLXc4aHFlqXlDWRWyEiX0FFEN6BiRgxGT8SOOMkiMEjMDKW8x3j37ygiNZJG8s7pXAMmVRB65OIl+SxdCvKhbNBh0bBd9fM4CR9S8HN+MSqmCY=
-            secure: NiJDiA7MsqM4VBgI01YxkxUGf9lExDL6cXn61jkvnDr2XEzr/2efHpqhtoLrjEUyFsMdYRflRN3xIgNHG7w+LPU8g3y0HxaYYqnK8b+xjwwv6ym7prDtSBV7BO6kgBsUz/hFycVCAH3SNl6LgWSjNEjaOieogDbRYlc/1QI+KadImtcldzGIGTrzlXl5GPOU1IiGivvxQL0vIEUxWLjS8hYLMkazDQj+WleYLGwCR+dCp+Ia6EQUtx0Eda6SZMf2m6yOyZo3KLoogsO6pUalt6ZQ7RRRyTR24Ah718Qgyn9jocnQeronHe6rK7UjqHZorWNRzlVTrbuHeGSA81RgrDXNGam+6dr8diazJ6/BEy0nhP6pI8Svn0XlbludMzwsEKo01G5LsjKB8eXxtV7MY3C937fQqaUojhTstMtJiIVz+QFfCR9GacgJbCMbgW0gnR/eC79xbcUIqp3bCRjzIuxswnigedzp7STAqwARkW9Ub8IVAU00QHVUuTOF9AynggivvGFznyFz2tGCVNeojnk0iQ7hLyVQmS/O3ucI0NLTiCYSjfqfyiPw6lJXavbFJPcxqEKE8W359W/gogj41aja+ATqKg6n6dCu5QLR7ExEtynJ48hbjXVQ7gCAdL9odAPwZiwMD6epIwklZJ9QF2bdEPaL2W2YQgIvcEl6V/Q=
+        - secure: IC5JvKbQrf+f2FG+9GWRTX7rYL4Ex1/aMC+ycDiMgnM8rXSbsWnrNtbzWTthGPurkcOkCjkgG9NMHYv44dJr1f/03Dsq7VHebsj5t/5TFVrTTJ1NSKTGpIRN2QjvR0XTOqiI16NLs9bgc5n69WN4BR+9UIQnQi8G0uMnJjJE8R+BQIO1VdiNJfI4nCybWdEfAZsjd6uozdr0pN5AXmBLyZSjG6qRVo9YBLdiQCZrjtj/ZPrmwot7wGTH11PhQyxrh2luKbOIC4lZBRw+6EU5/7shgwHry5c42RomzpMEk7eHkYKiM5FDS1BTHl1dkAUoT8x43dBV4ddNfiYdBzyBim0C66/7dw0Y67An4QBFtHcXmaCy1437VjbcF4StpyAh9/2AsmPjLMuKCc0ZMSvSHirdHiToV1+mzEPWeu1/p6ylRgv4RcPBNc0lb9PMrkY4h1ZL7XrvXmPpR6/tZrha5Qbpbjoa7MxW8qi/G4cYhTl8PHxIbdmD4ldihZUQyz7U6y4Vbsy2Nkv+42wG0xFrJ9tfPE3EuHizjAXzzzVRN8pZjaEv1uuNRb7yHT1slqLXc4aHFlqXlDWRWyEiX0FFEN6BiRgxGT8SOOMkiMEjMDKW8x3j37ygiNZJG8s7pXAMmVRB65OIl+SxdCvKhbNBh0bBd9fM4CR9S8HN+MSqmCY=
+        - secure: NiJDiA7MsqM4VBgI01YxkxUGf9lExDL6cXn61jkvnDr2XEzr/2efHpqhtoLrjEUyFsMdYRflRN3xIgNHG7w+LPU8g3y0HxaYYqnK8b+xjwwv6ym7prDtSBV7BO6kgBsUz/hFycVCAH3SNl6LgWSjNEjaOieogDbRYlc/1QI+KadImtcldzGIGTrzlXl5GPOU1IiGivvxQL0vIEUxWLjS8hYLMkazDQj+WleYLGwCR+dCp+Ia6EQUtx0Eda6SZMf2m6yOyZo3KLoogsO6pUalt6ZQ7RRRyTR24Ah718Qgyn9jocnQeronHe6rK7UjqHZorWNRzlVTrbuHeGSA81RgrDXNGam+6dr8diazJ6/BEy0nhP6pI8Svn0XlbludMzwsEKo01G5LsjKB8eXxtV7MY3C937fQqaUojhTstMtJiIVz+QFfCR9GacgJbCMbgW0gnR/eC79xbcUIqp3bCRjzIuxswnigedzp7STAqwARkW9Ub8IVAU00QHVUuTOF9AynggivvGFznyFz2tGCVNeojnk0iQ7hLyVQmS/O3ucI0NLTiCYSjfqfyiPw6lJXavbFJPcxqEKE8W359W/gogj41aja+ATqKg6n6dCu5QLR7ExEtynJ48hbjXVQ7gCAdL9odAPwZiwMD6epIwklZJ9QF2bdEPaL2W2YQgIvcEl6V/Q=
     hipchat:
         rooms:
-            secure: f97lUlN/vlqhzvayhajpTZox1ktN6pD0+S/N27kkP3bbWX84MYLCmU2oN1cO56JQjiZmD6XHfAHv2STvxyw+NHtksKUJskYDoMPz8nIu05NTJP18gNoHvVLLniSJkzt96Tf5OsGgCndJdmeOmS6MflsNFY7WfOvaY6nZKwu+CkoBhM/wQXHYJid+8sIK2HdqE/7dnFLfndMyPlts4iP6oDHU5Flpdu9Hz5MZQ70RBLgXy/2d6/57wWGMaHIU9JXklGrWbjO08MJii9+l+dd3xM/3dU5iK8UNhtKUEL7li3RoZMGnCN4fsMdvZm1AM6WJvgejtR78PA/YsRuKBKr09rnR1TVrJIr1nkAdrqvdYpKAv6AbbRF7t7sibhGUOWa/HH3PCVWZw6jT/sE5EWcqPTaeYD+ZJivRgGMqQVhvsTSGrJc2PswRTNx3V+W4HqV/cW4T0mHora3uAHBkyhHjqwImCt7E6JgjCRv76miiLmKxJFZcwLse8agRDP3hMM4KTNFXtEURdjF/ewX8+GwUxLQgs1Jlo2Ko+jUoNAntqiP5iW21GfHrfIZ1gRMOpMYb8u4TDNL4gaAHLLxErh2aq3ncLLeGnS1rHW2V9z7UABeif2mnd8gB2EAFo2SzKMniCmuOmWjdmTKE1mskR/UFNisMgYT1s/NIMjhHfKMXoic=
+        - secure: f97lUlN/vlqhzvayhajpTZox1ktN6pD0+S/N27kkP3bbWX84MYLCmU2oN1cO56JQjiZmD6XHfAHv2STvxyw+NHtksKUJskYDoMPz8nIu05NTJP18gNoHvVLLniSJkzt96Tf5OsGgCndJdmeOmS6MflsNFY7WfOvaY6nZKwu+CkoBhM/wQXHYJid+8sIK2HdqE/7dnFLfndMyPlts4iP6oDHU5Flpdu9Hz5MZQ70RBLgXy/2d6/57wWGMaHIU9JXklGrWbjO08MJii9+l+dd3xM/3dU5iK8UNhtKUEL7li3RoZMGnCN4fsMdvZm1AM6WJvgejtR78PA/YsRuKBKr09rnR1TVrJIr1nkAdrqvdYpKAv6AbbRF7t7sibhGUOWa/HH3PCVWZw6jT/sE5EWcqPTaeYD+ZJivRgGMqQVhvsTSGrJc2PswRTNx3V+W4HqV/cW4T0mHora3uAHBkyhHjqwImCt7E6JgjCRv76miiLmKxJFZcwLse8agRDP3hMM4KTNFXtEURdjF/ewX8+GwUxLQgs1Jlo2Ko+jUoNAntqiP5iW21GfHrfIZ1gRMOpMYb8u4TDNL4gaAHLLxErh2aq3ncLLeGnS1rHW2V9z7UABeif2mnd8gB2EAFo2SzKMniCmuOmWjdmTKE1mskR/UFNisMgYT1s/NIMjhHfKMXoic=
         template:
         - '%{repository_slug}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}
       (<a href="%{build_url}">Details</a>/<a href="%{compare_url}">Change view</a>)'
