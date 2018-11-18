@@ -35,7 +35,7 @@ before_install:
 - openssl genrsa 4096 -aes256 > clashroyale.pem
 - openssl pkcs8 -topk8 -inform PEM -outform PEM -in clashroyale.pem -out clashroyale-private.pem -nocrypt
 - openssl rsa -in clashroyale-private.pem -pubout -outform PEM -out clashroyale-public.pem
-- mongo clashroyale --eval "db.createUser({user:"clashroyale", pwd:"clashroyale", roles:["readWrite"]});"
+- mongo clashroyale --eval 'db.createUser({user:"clashroyale", pwd:"clashroyale", roles:["readWrite"]});'
 
 install:
 - npm install

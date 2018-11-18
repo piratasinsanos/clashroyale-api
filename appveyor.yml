@@ -6,10 +6,10 @@ version: "{build}"
 
 # Test against this version of Node.js
 environment:
-  DATABASE_URL="mongodb://127.0.0.1:27017/clashroyale"
-  DATABASE_NAME="clashroyale"
-  RSA_PUBLIC_KEY="clashroyale-public.pem"
-  RSA_RIVATE_KEY="clashroyale-private.pem"
+  DATABASE_URL: "mongodb://127.0.0.1:27017/clashroyale"
+  DATABASE_NAME: "clashroyale"
+  RSA_PUBLIC_KEY: "clashroyale-public.pem"
+  RSA_RIVATE_KEY: "clashroyale-private.pem"
 
   matrix:
   - nodejs_version: "8"
