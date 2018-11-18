@@ -14,42 +14,22 @@ export class RankingRepository extends BaseRepository<Ranking> {
     constructor() {
         super(new Schema({
             created: Date,
-            clan: new Schema({
+            tag: String,
+            member: new Schema({
                 tag: String,
                 name: String,
-                badgeId: Number,
-                type: String,
-                clanScore: Number,
-                requiredTrophies: Number,
-                donationsPerWeek: Number,
-                clanChestLevel: Number,
-                clanChestMaxLevel: Number,
-                members: Number,
-                location: new Schema({
-                    id: Number,
-                    name: String,
-                    isCountry: Boolean,
-                    countryCode: String
-                }),
-                description: String,
-                clanChestStatus: String,
+                expLevel: Number,
+                trophies: Number,
+                role: String,
+                clanRank: Number,
+                previousClanRank: Number,
+                donations: Number,
+                donationsReceived: Number,
                 clanChestPoints: Number,
-                memberList: [new Schema({
-                    tag: String,
-                    name: String,
-                    expLevel: Number,
-                    trophies: Number,
-                    role: String,
-                    clanRank: Number,
-                    previousClanRank: Number,
-                    donations: Number,
-                    donationsReceived: Number,
-                    clanChestPoints: Number,
-                    arena: new Schema({
-                        id: Number,
-                        name: String
-                    })
-                })]
+                arena: new Schema({
+                    id: Number,
+                    name: String
+                })
             }),
             operator: new Schema({
                 id: String,
@@ -63,13 +43,13 @@ export class RankingRepository extends BaseRepository<Ranking> {
         }), RankingRepository.COLLECTION_NAME)
     }
 
-    saveRanking(ranking: Ranking): Promise<Ranking> {
-        return this.model.create(ranking);
+    saveRanking(rankings: Ranking[]): Promise<Ranking[]> {
+        return this.model.create(rankings);
     }
 
     countAllByQuery(query: RankingQuery): Promise<number> {
         return this.model.count({
-            'clan.tag': query.tag
+            'tag': query.clan
         }).then((scores: number) => {
             return scores;
         });
@@ -77,7 +57,7 @@ export class RankingRepository extends BaseRepository<Ranking> {
 
     findAllByQuery(query: RankingQuery): Promise<Ranking[]> {
         return this.model.find({
-            'clan.tag': query.tag
+            'tag': query.clan
         }).skip((query.page || 0) * RankingRepository.TOTAL_RECORD_PER_QUERY)
             .limit(RankingRepository.TOTAL_RECORD_PER_QUERY)
             .then((rankings: Ranking[]) => {

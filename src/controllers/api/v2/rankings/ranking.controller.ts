@@ -1,6 +1,6 @@
 import {BaseHttpController, controller, httpDelete, httpGet, httpPost, request, response} from "inversify-express-utils";
 import {RankingService, LazyPage} from "../../../../service/ranking.service";
-import {RankingModel} from "../../../../model/ranking.model";
+import {Ranking} from "../../../../model/ranking";
 import {PayloadRequest} from "../../../../http/payload.request";
 import {container} from "../../../../types/inversify.config";
 import {MediaType} from "../../../../http/media.type";
@@ -24,7 +24,7 @@ export class RankingController extends BaseHttpController {
     }
 
     @httpGet("/", TYPES.AcceptableMiddleware)
-    public getRankings(request: PayloadRequest, response: Response): Promise<LazyPage<RankingModel> | void> {
+    public getRankings(request: PayloadRequest, response: Response): Promise<LazyPage<Ranking> | void> {
 
         this._logger.log("debug", format("HTTP %s %s %s", request.method, request.url, response.statusCode));
 
@@ -38,7 +38,7 @@ export class RankingController extends BaseHttpController {
     }
 
     @httpGet("/:id", TYPES.AcceptableMiddleware)
-    public getRanking(request: PayloadRequest, response: Response): Promise<RankingModel | void> {
+    public getRanking(request: PayloadRequest, response: Response): Promise<Ranking | void> {
 
         response.status(200)
             .header("Content-Version", "v2")
@@ -50,7 +50,7 @@ export class RankingController extends BaseHttpController {
     }
 
     @httpPost("/", container.getNamed<RequestHandler>(TYPES.AcceptableRequestHandler, MediaType.APPLICATION_JSON))
-    public setRanking(request: PayloadRequest, response: Response): Promise<RankingModel | void> {
+    public setRanking(request: PayloadRequest, response: Response): Promise<Ranking[] | void> {
 
         response.status(200)
             .header("Content-Version", "v2")

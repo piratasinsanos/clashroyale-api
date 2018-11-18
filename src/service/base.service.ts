@@ -4,9 +4,9 @@ import {injectable} from "inversify";
 @injectable()
 export abstract class BaseService {
 
-    private _logger: Logger;
+    private readonly _logger: Logger;
 
-    constructor() {
+    protected constructor() {
         this._logger = new Logger();
     }
 
