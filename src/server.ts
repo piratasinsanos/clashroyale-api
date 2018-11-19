@@ -18,17 +18,7 @@ const logger = new Logger({
 const connection = connect(<string>environment.mongo.host, {
   poolSize: 30,
   useNewUrlParser: true,
-  dbName: environment.mongo.datasource,
-  server: {
-    socketOptions: {
-      keepAlive: 1, connectTimeoutMS: 30000
-    }
-  },
-  replset: {
-    socketOptions: {
-      keepAlive: 1, connectTimeoutMS: 30000
-    }
-  }
+  dbName: environment.mongo.datasource
 }).then((mongo: Mongoose) => {
   return mongo;
 });
@@ -45,7 +35,7 @@ server.on('listening', function () {
     logger.log('info', format('Environment: %s', environment.env || 'development'));
     if (!isNullOrUndefined(environment.clashroyale.token)) {
       const job = new CronJob({
-        cronTime: '00 */15 * * * *',
+        cronTime: '00 */6 * * * *',
         timeZone: 'America/Bahia',
         start: true,
         onTick: () => {
