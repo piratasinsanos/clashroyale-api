@@ -1,22 +1,36 @@
-import {RankingQuery} from "../criteria/ranking.query";
-import {RankingModel} from "../model/ranking.model";
-import {BaseRepository} from "./base.repository";
-import {Payload} from "../model/payload";
-import {injectable} from "inversify";
-import {Schema} from "mongoose";
-import {ObjectID} from "bson";
+import {RankingQuery} from '../criteria/ranking.query';
+import {BaseRepository} from './base.repository';
+import {Ranking} from '../model/ranking';
+import {Payload} from '../model/payload';
+import {injectable} from 'inversify';
+import {Schema} from 'mongoose';
+import {ObjectID} from 'bson';
 
 @injectable()
-export class RankingRepository extends BaseRepository<RankingModel> {
+export class RankingRepository extends BaseRepository<Ranking> {
 
-    private static COLLECTION_NAME = "rankings";
+    private static COLLECTION_NAME = 'rankings';
 
     constructor() {
         super(new Schema({
             created: Date,
-            control: String,
-            signature: String,
-            composition: new Schema({}),
+            tag: String,
+            member: new Schema({
+                tag: String,
+                name: String,
+                expLevel: Number,
+                trophies: Number,
+                role: String,
+                clanRank: Number,
+                previousClanRank: Number,
+                donations: Number,
+                donationsReceived: Number,
+                clanChestPoints: Number,
+                arena: new Schema({
+                    id: Number,
+                    name: String
+                })
+            }),
             operator: new Schema({
                 id: String,
                 sub: String,
@@ -29,42 +43,40 @@ export class RankingRepository extends BaseRepository<RankingModel> {
         }), RankingRepository.COLLECTION_NAME)
     }
 
-    saveRanking(ranking: RankingModel): Promise<RankingModel> {
-        return this.model.create(ranking);
+    saveRanking(rankings: Ranking[]): Promise<Ranking[]> {
+        return this.model.create(rankings);
     }
 
     countAllByQuery(query: RankingQuery): Promise<number> {
-        return this.model.count({
-            "tag": query.tag,
-            "player": new ObjectID(query.quantity)
+        return this.model.estimatedDocumentCount({
+            'tag': query.clan
         }).then((scores: number) => {
             return scores;
         });
     }
 
-    findAllByQuery(query: RankingQuery): Promise<RankingModel[]> {
+    findAllByQuery(query: RankingQuery): Promise<Ranking[]> {
         return this.model.find({
-            "tag": query.tag,
-            "player": new ObjectID(query.quantity)
+            'tag': query.clan
         }).skip((query.page || 0) * RankingRepository.TOTAL_RECORD_PER_QUERY)
             .limit(RankingRepository.TOTAL_RECORD_PER_QUERY)
-            .then((rankings: RankingModel[]) => {
+            .then((rankings: Ranking[]) => {
                 return rankings;
             });
     }
 
-    findRankingById(rankingId: string): Promise<RankingModel> {
-        return this.model.findById(rankingId).then((ranking: RankingModel | null) => {
-            return <RankingModel>ranking;
+    findRankingById(rankingId: string): Promise<Ranking> {
+        return this.model.findById(new ObjectID(rankingId)).then((ranking: Ranking | null) => {
+            return <Ranking>ranking;
         });
     }
 
-    deleteRankingById(rankingId: string, operator: Payload): Promise<RankingModel> {
+    deleteRankingById(rankingId: string, operator: Payload): Promise<Ranking> {
         return this.model.findOneAndRemove({
             _id: new ObjectID(rankingId),
             operator: operator
-        }).then((ranking: RankingModel | null) => {
-            return <RankingModel>ranking;
+        }).then((ranking: Ranking | null) => {
+            return <Ranking>ranking;
         });
     }
 

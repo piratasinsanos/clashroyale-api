@@ -67,7 +67,10 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+*.env
+*.env.*
+!.env.example
+
 /.idea/
 .idea/ehr-service.iml
 .idea/modules.xml

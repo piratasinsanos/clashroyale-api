@@ -1,6 +1,6 @@
-import * as dotenv from "dotenv";
-import * as Joi from "joi";
-import {format} from "util";
+import * as dotenv from 'dotenv';
+import * as Joi from 'joi';
+import {format} from 'util';
 
 // require and configure dotenv, will load vars in .env in PROCESS.ENV
 dotenv.config();
@@ -8,30 +8,33 @@ dotenv.config();
 // define validation for all the env vars
 const schema: Joi.ObjectSchema = Joi.object({
     NODE_ENV: Joi.string()
-        .default("development")
+        .default('development')
         .allow([
-            "development",
-            "production",
-            "test",
-            "uat"]),
+            'development',
+            'production',
+            'test',
+            'uat']),
     PORT: Joi.number()
         .default(8000),
     ENCRYPT_DOCUMENT: Joi.boolean().default(false),
     RSA_PUBLIC_KEY: Joi.string().required()
-        .description("JWT public key required to sign"),
+        .description('JWT public key required to sign'),
     RSA_RIVATE_KEY: Joi.string().required()
-        .description("JWT private key required to sign"),
+        .description('JWT private key required to sign'),
     DATABASE_URL: Joi.string().required()
-        .description("Mongo DB host url"),
-    DATABASE_DATASOURCE: Joi.string().required()
-        .description("Mongo datasource name "),
-    DATABASE_PORT: Joi.number().default(27017)
+        .description('Mongo DB host url'),
+    DATABASE_NAME: Joi.string().required()
+        .description('Mongo datasource name '),
+    DATABASE_PORT: Joi.number().default(27017),
+    CLASS_ROYALE_URL: Joi.string().default('https://api.clashroyale.com/v1'),
+    CLASS_ROYALE_TOKEN: Joi.string()
+
 }).unknown().required();
 
 const {error, value: env} = Joi.validate(process.env, schema);
 
 if (error) {
-    throw new Error(format("Config validation error: %s", error.message));
+    throw new Error(format('Config validation error: %s', error.message));
 }
 
 export const environment = {
@@ -44,7 +47,11 @@ export const environment = {
     mongo: {
         host: env.DATABASE_URL,
         port: env.DATABASE_PORT,
-        datasource: env.DATABASE_DATASOURCE
+        datasource: env.DATABASE_NAME
+    },
+    clashroyale: {
+        host: env.CLASS_ROYALE_URL,
+        token: env.CLASS_ROYALE_TOKEN
     },
     encrypt: env.ENCRYPT_DOCUMENT
 };
