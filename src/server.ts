@@ -3,11 +3,11 @@ import {environment} from './configuration/environment';
 import {AxiosError, AxiosResponse} from 'axios';
 import {format, isNullOrUndefined} from 'util';
 import {connect, Mongoose} from 'mongoose';
+import {Ranking} from './model/ranking';
 import {Logger} from './lib/logger';
 import {app} from './bootstrap';
 import {CronJob} from 'cron';
 import {Server} from 'http';
-import {Ranking} from './model/ranking';
 
 const logger = new Logger({
   message: 'Server initialized',
@@ -35,7 +35,7 @@ server.on('listening', function () {
     logger.log('info', format('Environment: %s', environment.env || 'development'));
     if (!isNullOrUndefined(environment.clashroyale.token)) {
       const job = new CronJob({
-        cronTime: '00 */6 * * * *',
+        cronTime: '00 */15 * * * *',
         timeZone: 'America/Bahia',
         start: true,
         onTick: () => {
