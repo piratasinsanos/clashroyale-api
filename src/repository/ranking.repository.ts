@@ -48,7 +48,7 @@ export class RankingRepository extends BaseRepository<Ranking> {
     }
 
     countAllByQuery(query: RankingQuery): Promise<number> {
-        return this.model.count({
+        return this.model.estimatedDocumentCount({
             'tag': query.clan
         }).then((scores: number) => {
             return scores;

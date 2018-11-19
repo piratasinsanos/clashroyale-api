@@ -63,7 +63,7 @@ export class RankingService extends BaseService {
       return;
     }
 
-    this.logger.log('info', format('Operator: %s', ranking.operator.surname));
+    this.logger.log('info', format('Operator: %s', ranking.operator!.surname));
 
     return ranking;
 
@@ -83,8 +83,7 @@ export class RankingService extends BaseService {
         throw new BusinessErrorException('Clan #tag not found!', 412);
       }
 
-      if (isNullOrUndefined(ranking.member) || isNullOrUndefined(ranking.member.tag) ||
-        isNullOrUndefined(ranking.member!.name)) {
+      if (isNullOrUndefined(ranking.member) || isNullOrUndefined(ranking.member.tag) || isNullOrUndefined(ranking.member!.name)) {
         throw new BusinessErrorException('Member #tag or name not found!', 412);
       }
 

@@ -10,6 +10,7 @@ environment:
   DATABASE_NAME: "clashroyale"
   RSA_PUBLIC_KEY: "clashroyale-public.pem"
   RSA_RIVATE_KEY: "clashroyale-private.pem"
+  NODE_ENV: "test"
 
   matrix:
   - nodejs_version: "8"
@@ -30,7 +31,10 @@ install:
 - npm install -g npm
 - npm config set progress=false
 - npm install
-- mongo clashroyale --eval "db.createUser({user:"clashroyale", pwd:"clashroyale", roles:["readWrite"]});"
+
+before_build:
+- c:\mongodb\bin\mongo --version
+- c:\mongodb\bin\mongo clashroyale --eval 'db.createUser({user:"clashroyale", pwd:"clashroyale", roles:["readWrite"]});'
 
 # Fix line endings on Windows
 init:
@@ -41,3 +45,11 @@ test_script:
 - node --version && npm --version
 - ps: "npm --version # PowerShell" # Pass comment to PS for easier debugging
 - cmd: npm run test
+
+# to disable deployment
+deploy: off
+
+notifications:
+# Email
+- provider: Email
+  on_build_status_changed: true

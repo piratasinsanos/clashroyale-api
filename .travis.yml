@@ -20,6 +20,8 @@ env:
     - DATABASE_NAME="clashroyale"
     - RSA_PUBLIC_KEY="clashroyale-public.pem"
     - RSA_RIVATE_KEY="clashroyale-private.pem"
+    - NODE_ENV="test"
+    - CI=true
 #    - GOOGLE_APPLICATION_CREDENTIALS=~/gcloud-service-key.json
 #    - PROJECT_NAME_STG=<YOUR_PROJECT_NAME>
 #    - CLUSTER_NAME_STG=<YOUR_CLUSTER_NAME>

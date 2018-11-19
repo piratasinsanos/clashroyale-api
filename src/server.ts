@@ -18,7 +18,17 @@ const logger = new Logger({
 const connection = connect(<string>environment.mongo.host, {
   poolSize: 30,
   useNewUrlParser: true,
-  dbName: environment.mongo.datasource
+  dbName: environment.mongo.datasource,
+  server: {
+    socketOptions: {
+      keepAlive: 1, connectTimeoutMS: 30000
+    }
+  },
+  replset: {
+    socketOptions: {
+      keepAlive: 1, connectTimeoutMS: 30000
+    }
+  }
 }).then((mongo: Mongoose) => {
   return mongo;
 });
