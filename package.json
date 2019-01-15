@@ -83,7 +83,7 @@
     "passport": "0.4.0",
     "passport-http": "0.3.0",
     "passport-http-bearer": "1.0.1",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "^0.1.13",
     "to": "^0.2.9",
     "typescript": "^2.6.2",
     "update": "^0.7.4",
