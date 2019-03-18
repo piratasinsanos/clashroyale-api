@@ -56,7 +56,7 @@
     "axios": "^0.18.0",
     "body-parser": "1.18.2",
     "bundalo": "1.0.0",
-    "compression": "^1.7.2",
+    "compression": "^1.7.4",
     "construx": "1.0.1",
     "construx-copier": "1.0.0",
     "cookie-parser": "^1.4.3",
