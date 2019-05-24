@@ -91,7 +91,7 @@
     "winston": "^2.4.1"
   },
   "devDependencies": {
-    "@types/acl": "0.4.34",
+    "@types/acl": "0.4.37",
     "@types/body-parser": "1.16.8",
     "@types/chai": "^4.1.0",
     "@types/chai-http": "^3.0.3",
