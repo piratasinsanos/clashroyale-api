@@ -114,7 +114,7 @@
     "@types/jsonwebtoken": "7.2.5",
     "@types/kafka-node": "^2.0.7",
     "@types/lodash": "4.14.104",
-    "@types/mocha": "^2.2.46",
+    "@types/mocha": "^5.2.7",
     "@types/moment": "^2.13.0",
     "@types/mongodb": "^3.0.2",
     "@types/mongoose": "^5.0.7",
