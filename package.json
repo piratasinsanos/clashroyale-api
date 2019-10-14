@@ -124,7 +124,7 @@
     "@types/oauth2orize": "^1.8.3",
     "@types/passport": "0.4.3",
     "@types/passport-http": "0.3.5",
-    "@types/passport-http-bearer": "1.0.31",
+    "@types/passport-http-bearer": "1.0.34",
     "@types/passport-local": "1.0.32",
     "@types/passport-oauth2-client-password": "^0.1.1",
     "@types/source-map": "^0.5.7",
