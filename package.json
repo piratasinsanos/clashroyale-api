@@ -80,7 +80,7 @@
     "morgan": "^1.7.0",
     "npm": "^5.10.0",
     "oauth2orize": "^1.11.0",
-    "passport": "0.4.0",
+    "passport": "0.4.1",
     "passport-http": "0.3.0",
     "passport-http-bearer": "1.0.1",
     "reflect-metadata": "^0.1.12",
