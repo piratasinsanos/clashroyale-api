@@ -152,7 +152,7 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-mocha": "^5.0.0",
     "gulp-newer": "^1.4.0",
-    "gulp-nodemon": "^2.2.1",
+    "gulp-nodemon": "^2.5.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-tslint": "^8.1.3",
     "gulp-typescript": "^4.0.1",
