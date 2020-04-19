@@ -166,7 +166,7 @@
     "nodemon": "1.15.1",
     "nyc": "^11.4.1",
     "sonarqube-scanner": "^2.0.2",
-    "source-map-support": "^0.5.0",
+    "source-map-support": "^0.5.17",
     "supertest": "^3.0.0",
     "ts-mocha": "^1.1.0",
     "ts-node": "5.0.0",
