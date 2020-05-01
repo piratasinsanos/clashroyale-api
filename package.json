@@ -128,7 +128,7 @@
     "@types/passport-local": "1.0.32",
     "@types/passport-oauth2-client-password": "^0.1.1",
     "@types/source-map": "^0.5.7",
-    "@types/supertest": "^2.0.4",
+    "@types/supertest": "^2.0.9",
     "@types/uuid": "^3.4.3",
     "@types/winston": "2.3.8",
     "babel-cli": "^6.26.0",
