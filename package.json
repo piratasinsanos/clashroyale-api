@@ -74,7 +74,7 @@
     "jsonwebtoken": "^8.1.0",
     "lodash": "4.17.5",
     "meddleware": "^3.0.3",
-    "moment": "^2.19.4",
+    "moment": "^2.29.2",
     "mongodb": "^3.0.1",
     "mongoose": "^5.0.10",
     "morgan": "^1.7.0",
